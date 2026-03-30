@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CertiChain</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="space-bg"></div>
+  <main class="app-shell">
+    <section class="hero">
+      <div class="orbit orbit-one"></div>
+      <div class="orbit orbit-two"></div>
+      <div class="satellite satellite-one"></div>
+      <div class="satellite satellite-two"></div>
+      <div class="shooting-star shooting-star-one"></div>
+      <div class="shooting-star shooting-star-two"></div>
+      <p class="eyebrow">Blockchain Certificate Verification</p>
+      <h1>CertiChain</h1>
+      <p class="subtitle">
+        A certificate verification dApp that creates SHA-256 proof hashes locally
+        and stores only trusted proof on the Sepolia testnet.
+      </p>
+      <div class="hero-tags">
+        <span>Smart Verification</span>
+        <span>Proof-First Storage</span>
+        <span>Wallet-Free Verify</span>
+        <span>Sepolia Ready</span>
+      </div>
+      <div class="hero-actions">
+        <button id="connectWalletBtn" class="primary-btn">Connect MetaMask</button>
+        <button id="switchNetworkBtn" class="secondary-btn">Switch to Sepolia</button>
+      </div>
+      <p id="walletStatus" class="status-text">Wallet not connected</p>
+    </section>
+
+    <section class="grid summary-grid">
+      <div class="card summary-card">
+        <h2>Why Blockchain?</h2>
+        <p>CertiChain uses blockchain as a tamper-proof trust layer so certificate authenticity can be checked transparently.</p>
+      </div>
+      <div class="card summary-card">
+        <h2>What Improved Today?</h2>
+        <p>The app now supports read-only verification without wallet connection, stronger UI, and a smoother demo flow.</p>
+      </div>
+      <div class="card summary-card">
+        <h2>Who Can Use It?</h2>
+        <p>Colleges, event organizers, student societies, and recruiters can all issue or verify trusted certificates.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Session Insights Applied</h2>
+      <div class="insight-list">
+        <div class="insight-item">
+          <h3>Only proof goes on-chain</h3>
+          <p>Certificates stay off-chain. The app stores only a SHA-256 hash so data remains lighter, cheaper, and privacy-friendly.</p>
+        </div>
+        <div class="insight-item">
+          <h3>Read and write are different</h3>
+          <p>Adding a certificate needs wallet approval, while verification can be done transparently as a read operation.</p>
+        </div>
+        <div class="insight-item">
+          <h3>Trust comes from verifiability</h3>
+          <p>CertiChain focuses on authenticity checks instead of raw storage, which makes blockchain use more meaningful.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Improved Project Flow</h2>
+      <ol>
+        <li>User uploads a certificate file and the browser generates a SHA-256 hash locally.</li>
+        <li>User can register that proof on-chain using <code>addCertificate()</code>.</li>
+        <li>Anyone can later paste the same hash and verify whether it is already registered on Sepolia.</li>
+        <li>The app shows validity, issuer wallet, and the recorded timestamp.</li>
+      </ol>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Generate Hash</h2>
+        <label for="certificateFileInput">Certificate File</label>
+        <input id="certificateFileInput" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx" />
+        <button id="generateHashBtn" class="secondary-btn">Generate SHA-256 Hash</button>
+        <p id="hashStatus" class="status-text">No file selected</p>
+        <div class="result-box hash-box">
+          <p><strong>Generated Hash:</strong></p>
+          <p id="generatedHashValue">Hash will appear here.</p>
+        </div>
+        <button id="copyHashBtn" class="ghost-btn">Copy Hash</button>
+      </div>
+
+      <div class="card">
+        <h2>Add Certificate</h2>
+        <label for="addHashInput">Certificate Hash</label>
+        <input id="addHashInput" type="text" placeholder="Paste or generate certificate hash" />
+        <button id="addCertificateBtn" class="primary-btn">Add Certificate On-Chain</button>
+        <p id="addStatus" class="status-text">No transaction yet</p>
+      </div>
+
+      <div class="card">
+        <h2>Verify Certificate</h2>
+        <label for="verifyHashInput">Certificate Hash</label>
+        <input id="verifyHashInput" type="text" placeholder="Paste or generate certificate hash" />
+        <button id="verifyCertificateBtn" class="primary-btn">Verify On Sepolia</button>
+        <div id="verifyResult" class="result-box">
+          <p>Result will appear here.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
